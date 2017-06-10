@@ -1,0 +1,13 @@
+{
+  "name": "sp-ws",
+  "version": "1.0.0",
+  "description": "learning ws",
+  "main": "server.js",
+  "repository": "git@github.com:SmallPotatoZc/wsSocket.git",
+  "author": "zhangChao <1148563917@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3",
+    "ws": "^3.0.0"
+  }
+}

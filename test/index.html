@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>WebSocket</title>
+</head>
+
+<body>
+
+  <script>
+    var ws = new WebSocket("ws://localhost:8080");
+
+    ws.onopen = function(evt) {
+      console.log("Connection open ...");
+      ws.send("Hello WebSockets!");
+    };
+
+    ws.onmessage = function(evt) {
+      console.log("Received Message: " + evt.data);
+
+      if (typeof event.data === String) {
+        console.log("Received data string");
+      }
+
+      if (event.data instanceof ArrayBuffer) {
+        var buffer = event.data;
+        console.log("Received arraybuffer");
+      }
+      // ws.close();
+    };
+
+    ws.onclose = function(evt) {
+      console.log("Connection closed.");
+    };
+
+    switch (ws.readyState) {
+      case WebSocket.CONNECTING:
+        console.log('WebSocket的链接状态---正在链接', WebSocket.CONNECTING);
+        break;
+      case WebSocket.OPEN:
+        console.log('WebSocket的链接状态---链接成功', WebSocket.OPEN);
+        break;
+      case WebSocket.CLOSING:
+        console.log('WebSocket的链接状态---正在关闭', WebSocket.CLOSING);
+        break;
+      case WebSocket.CLOSED:
+        console.log('WebSocket的链接状态---链接失败(成功关闭)', WebSocket.CLOSED);
+        break;
+      default:
+        // this never happens
+        break;
+    }
+  </script>
+</body>
+
+</html>
